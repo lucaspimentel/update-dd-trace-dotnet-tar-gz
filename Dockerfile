@@ -3,9 +3,9 @@ ARG TRACER_VERSION=2.53.2
 
 # download tarball and extract files
 ADD https://github.com/DataDog/dd-trace-dotnet/releases/download/v$TRACER_VERSION/datadog-dotnet-apm-$TRACER_VERSION.tar.gz /package/
+
 RUN tar -xzf /package/datadog-dotnet-apm-$TRACER_VERSION.tar.gz -C /package/ && \
-    rm /package/datadog-dotnet-apm-$TRACER_VERSION.tar.gz && \
-    mkdir -p /tracer/bin/artifacts/linux-x64
+    rm /package/datadog-dotnet-apm-$TRACER_VERSION.tar.gz
 
 # Restore projects
 COPY global.json /project/
@@ -34,6 +34,7 @@ COPY tracer/src/Datadog.Trace /project/tracer/src/Datadog.Trace
 # Build Datdog.Trace, copy output, and build new tarball
 RUN dotnet build -c release --no-restore /project/tracer/src/Datadog.Trace/Datadog.Trace.csproj && \
     cp -r /project/tracer/src/Datadog.Trace/bin/release/* /package/ && \
+    mkdir -p /tracer/bin/artifacts/linux-x64 && \
     tar -czf /tracer/bin/artifacts/linux-x64/datadog-dotnet-apm-$TRACER_VERSION.tar.gz -C /package/ .
 
 ##################################################
