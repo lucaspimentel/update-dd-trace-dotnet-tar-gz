@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 as builder
+ARG TRACER_VERSION=2.53.2
 
 # download tarball and extract files
-ARG TRACER_VERSION=2.53.2
 ADD https://github.com/DataDog/dd-trace-dotnet/releases/download/v$TRACER_VERSION/datadog-dotnet-apm-$TRACER_VERSION.tar.gz /package/
 RUN tar -xzf /package/datadog-dotnet-apm-$TRACER_VERSION.tar.gz -C /package/ && \
     rm /package/datadog-dotnet-apm-$TRACER_VERSION.tar.gz && \
