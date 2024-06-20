@@ -27,9 +27,9 @@ COPY Datadog.Trace.snk /project/
 COPY tracer/stylecop.json /project/tracer/
 COPY tracer/GlobalSuppressions.cs /project/tracer/
 COPY tracer/src/GlobalSuppressions.cs /project/tracer/src/
-COPY tracer/src/Datadog.Trace.SourceGenerators /project/tracer/src/Datadog.Trace.SourceGenerators
-COPY tracer/src/Datadog.Trace.Tools.Analyzers /project/tracer/src/Datadog.Trace.Tools.Analyzers
-COPY tracer/src/Datadog.Trace /project/tracer/src/Datadog.Trace
+COPY tracer/src/Datadog.Trace.SourceGenerators /project/tracer/src/Datadog.Trace.SourceGenerators/
+COPY tracer/src/Datadog.Trace.Tools.Analyzers /project/tracer/src/Datadog.Trace.Tools.Analyzers/
+COPY tracer/src/Datadog.Trace /project/tracer/src/Datadog.Trace/
 
 # Build Datdog.Trace, copy output, and build new tarball
 RUN dotnet build -c release --no-restore /project/tracer/src/Datadog.Trace/Datadog.Trace.csproj && \
