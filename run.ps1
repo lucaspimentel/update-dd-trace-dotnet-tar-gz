@@ -24,10 +24,10 @@ if ($TracerVersion -eq "") {
 }
 
 docker image build --rm `
-  --file "$PSScriptRoot/update-tar-gz.Dockerfile" `
-  --output "$OutputPath" `
-  --tag 'update-tracer-tar-gz' `
-  --build-arg "TRACER_VERSION=$TracerVersion" `
-  "$TracerHome"
+    --file "$PSScriptRoot/update-tar-gz.Dockerfile" `
+    --output "$OutputPath" `
+    --tag 'update-tracer-tar-gz' `
+    --build-arg "TRACER_VERSION=$TracerVersion" `
+    "$TracerHome"
 
-  Write-Output "Artifact created in $OutputPath."
+Write-Output "Artifact created in $OutputPath."
