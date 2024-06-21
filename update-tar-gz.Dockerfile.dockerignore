@@ -1,0 +1,25 @@
+# ignore everything by default
+*
+
+# keep these files and directories
+!Datadog.Trace.snk
+!global.json
+!nuget.config
+
+!tracer/stylecop.json
+!tracer/GlobalSuppressions.cs
+!tracer/Directory.Build.*
+!tracer/src/GlobalSuppressions.cs
+!tracer/src/Directory.Build.*
+
+!tracer/src/Datadog.Trace
+!tracer/src/Datadog.Trace.SourceGenerators
+!tracer/src/Datadog.Trace.Tools.Analyzers
+
+# still ignore any of these inside the above directories
+**/.vs
+**/.vscode
+**/.idea
+**/bin
+**/obj
+**/*.user
