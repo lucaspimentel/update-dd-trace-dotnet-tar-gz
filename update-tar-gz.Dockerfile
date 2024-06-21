@@ -10,7 +10,7 @@ COPY --exclude=**/*.cs . /project/
 RUN dotnet restore /project/tracer/src/Datadog.Trace/Datadog.Trace.csproj
 
 # Build Datdog.Trace, copy output, and build new tarball
-COPY . /project/
+COPY --parents **/*.cs /project/
 RUN dotnet build -c release --no-restore /project/tracer/src/Datadog.Trace/Datadog.Trace.csproj && \
     mkdir -p /package && \
     mv /project/tracer/src/Datadog.Trace/bin/release/* /package/
